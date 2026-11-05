@@ -5,9 +5,10 @@ docker run  (crea un contenedor a partir de una imagen)
 docker run
     -d              (se ejecuta en segundo plano)
     --name nombre_contenedor    (asigna el nombre)
-    -p 8080:80      (puerto_local:80  redirige el puerto 80 del contenedor al puerto_loca del anfitrion)
+    -p 8080:80      (puerto_local:80  redirige el puerto 80 del contenedor al puerto_loca del anfitrion) 3306(sql)
     -v ~/html:/usr/share/nginx/html  
         (crea un volumen local. Sincroniza la carpeta ~/html de mi equipo con la /usr... del contenedor)
+    -e      crear una variable de entorno dentro del contenedor ej MYSQL_ROOT_PASSWORD=root mysql:8.0
     nginx   (nombre de la imagen)
 
 
@@ -33,3 +34,29 @@ docker image rm nombre_imagen   (elimina una imagen local)
 docker logs nombre_contenedor   (muestra logs de config. y carga de un contenedor en ejecución)
 
 docker inspect nombre_contenedor (muestra información de un contenedor)
+
+
+docker build -t nombre_imagen . (crear una imagen de la carpeta actual)
+
+MYSQL
+mysql -u root -p    entrar a mysql y poner contraseña
+mysql -wroot -p     y poner la contraseña con el ej anterior (e) la password es root
+show databases;     muestra base de datos
+create database nombre_debasededatos;      crear base de datos
+use (nombre de la base de datos);            hacer cosas en una base de datos concreta para no tenerla que estar mencionando
+create table nombre_tabla(
+mysql> use db_prueba;
+
+mysql> create table alumnos(                crear una tabla ejemplo
+    -> nombre varchar(25),
+    -> edad_mentirosa int
+    -> );
+
+describe nombre_tabla;            muestra la estructura de la tabla
+mysql> insert into alumnos value ('Joselin',27), ('Cristina', 26), ('Alvaro', 55);    ejemplo de como rellenar la tabla
+mysql> select * from alumnos;      consultar una tabla rellenada
+
+
+
+dentro de sql ctrl+enter (ejecutar todo con shift la linea donde estas solo)
+
