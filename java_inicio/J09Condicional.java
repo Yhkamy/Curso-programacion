@@ -13,6 +13,7 @@ public class J09Condicional {
         } else {
             IO.println(num + " es impar");
         }    
+
     }
 
 }
